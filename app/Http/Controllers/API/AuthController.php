@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    /**
+     * Login user
+     *
+     * @bodyParam email string required User email
+     * @bodyParam password string required User password
+     */
     public function login(Request $request)
     {
         // Validate request

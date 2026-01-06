@@ -10,11 +10,11 @@ use App\Actions\Inventory\Product\StoreProductAction;
 use App\Actions\Inventory\Product\UpdateProductAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Inventory\Product\BulkDeleteProductRequest;
-use App\Http\Requests\Inventory\Product\ExportProductRequest;
 use App\Models\Product;
 use App\Http\Requests\Inventory\Product\StoreProductRequest;
 use App\Http\Requests\Inventory\Product\UpdateProductRequest;
 use Illuminate\Http\Request;
+use OpenApi\Annotations as OA;
 
 class ProductController extends Controller
 {
@@ -28,7 +28,7 @@ class ProductController extends Controller
     ) {}
 
     /**
-     * Display a listing of the resource.
+     * List products
      */
     public function index(Request $request)
     {
@@ -36,18 +36,12 @@ class ProductController extends Controller
         return $this->listPaginatedProductsAction->execute($request, 10);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StoreProductRequest $request)
     {
         $this->authorize('create');
         return $this->storeProductAction->execute($request->validated());
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Product $product)
     {
         $this->authorize('view', $product);
@@ -60,9 +54,6 @@ class ProductController extends Controller
         return $this->updateProductAction->execute($product, $request->validated());
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Product $product)
     {
         $this->authorize('delete', $product);

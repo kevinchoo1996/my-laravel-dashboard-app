@@ -1,0 +1,860 @@
+openapi: 3.0.3
+info:
+  title: 'Laravel API Documentation'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+tags:
+  -
+    name: Endpoints
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: 'You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.'
+security:
+  -
+    default: []
+paths:
+  /api/login:
+    post:
+      summary: 'Login user'
+      operationId: loginUser
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'User email'
+                  example: qkunze@example.com
+                password:
+                  type: string
+                  description: 'User password'
+                  example: 'O[2UZ5ij-e/dl4m{o,'
+              required:
+                - email
+                - password
+  /api/inventory/products:
+    get:
+      summary: 'List products'
+      operationId: listProducts
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  current_page: 1
+                  data:
+                    -
+                      id: 1
+                      category_id: 3
+                      name: 'Product 1'
+                      description: 'This is the description for Product 1.'
+                      price: 463
+                      stock: 11
+                      enabled: 1
+                      created_by: 1
+                      updated_by: 1
+                      deleted_by: null
+                      created_at: '2026-01-06T12:37:39.000000Z'
+                      updated_at: '2026-01-06T12:37:39.000000Z'
+                      deleted_at: null
+                      category:
+                        id: 3
+                        name: Clothing
+                        created_by: null
+                        updated_by: null
+                        deleted_by: null
+                        created_at: '2026-01-06T12:37:37.000000Z'
+                        updated_at: '2026-01-06T12:37:37.000000Z'
+                        deleted_at: null
+                    -
+                      id: 2
+                      category_id: 2
+                      name: 'Product 2'
+                      description: 'This is the description for Product 2.'
+                      price: 84
+                      stock: 60
+                      enabled: 1
+                      created_by: 1
+                      updated_by: 1
+                      deleted_by: null
+                      created_at: '2026-01-06T12:37:39.000000Z'
+                      updated_at: '2026-01-06T12:37:39.000000Z'
+                      deleted_at: null
+                      category:
+                        id: 2
+                        name: Books
+                        created_by: null
+                        updated_by: null
+                        deleted_by: null
+                        created_at: '2026-01-06T12:37:37.000000Z'
+                        updated_at: '2026-01-06T12:37:37.000000Z'
+                        deleted_at: null
+                    -
+                      id: 3
+                      category_id: 2
+                      name: 'Product 3'
+                      description: 'This is the description for Product 3.'
+                      price: 270
+                      stock: 28
+                      enabled: 1
+                      created_by: 1
+                      updated_by: 1
+                      deleted_by: null
+                      created_at: '2026-01-06T12:37:39.000000Z'
+                      updated_at: '2026-01-06T12:37:39.000000Z'
+                      deleted_at: null
+                      category:
+                        id: 2
+                        name: Books
+                        created_by: null
+                        updated_by: null
+                        deleted_by: null
+                        created_at: '2026-01-06T12:37:37.000000Z'
+                        updated_at: '2026-01-06T12:37:37.000000Z'
+                        deleted_at: null
+                    -
+                      id: 4
+                      category_id: 4
+                      name: 'Product 4'
+                      description: 'This is the description for Product 4.'
+                      price: 497
+                      stock: 48
+                      enabled: 1
+                      created_by: 1
+                      updated_by: 1
+                      deleted_by: null
+                      created_at: '2026-01-06T12:37:39.000000Z'
+                      updated_at: '2026-01-06T12:37:39.000000Z'
+                      deleted_at: null
+                      category:
+                        id: 4
+                        name: Toys
+                        created_by: null
+                        updated_by: null
+                        deleted_by: null
+                        created_at: '2026-01-06T12:37:37.000000Z'
+                        updated_at: '2026-01-06T12:37:37.000000Z'
+                        deleted_at: null
+                    -
+                      id: 5
+                      category_id: 5
+                      name: 'Product 5'
+                      description: 'This is the description for Product 5.'
+                      price: 28
+                      stock: 98
+                      enabled: 1
+                      created_by: 1
+                      updated_by: 1
+                      deleted_by: null
+                      created_at: '2026-01-06T12:37:39.000000Z'
+                      updated_at: '2026-01-06T12:37:39.000000Z'
+                      deleted_at: null
+                      category:
+                        id: 5
+                        name: Furniture
+                        created_by: null
+                        updated_by: null
+                        deleted_by: null
+                        created_at: '2026-01-06T12:37:37.000000Z'
+                        updated_at: '2026-01-06T12:37:37.000000Z'
+                        deleted_at: null
+                    -
+                      id: 6
+                      category_id: 5
+                      name: 'Product 6'
+                      description: 'This is the description for Product 6.'
+                      price: 416
+                      stock: 16
+                      enabled: 1
+                      created_by: 1
+                      updated_by: 1
+                      deleted_by: null
+                      created_at: '2026-01-06T12:37:39.000000Z'
+                      updated_at: '2026-01-06T12:37:39.000000Z'
+                      deleted_at: null
+                      category:
+                        id: 5
+                        name: Furniture
+                        created_by: null
+                        updated_by: null
+                        deleted_by: null
+                        created_at: '2026-01-06T12:37:37.000000Z'
+                        updated_at: '2026-01-06T12:37:37.000000Z'
+                        deleted_at: null
+                    -
+                      id: 7
+                      category_id: 3
+                      name: 'Product 7'
+                      description: 'This is the description for Product 7.'
+                      price: 41
+                      stock: 8
+                      enabled: 1
+                      created_by: 1
+                      updated_by: 1
+                      deleted_by: null
+                      created_at: '2026-01-06T12:37:39.000000Z'
+                      updated_at: '2026-01-06T12:37:39.000000Z'
+                      deleted_at: null
+                      category:
+                        id: 3
+                        name: Clothing
+                        created_by: null
+                        updated_by: null
+                        deleted_by: null
+                        created_at: '2026-01-06T12:37:37.000000Z'
+                        updated_at: '2026-01-06T12:37:37.000000Z'
+                        deleted_at: null
+                    -
+                      id: 8
+                      category_id: 2
+                      name: 'Product 8'
+                      description: 'This is the description for Product 8.'
+                      price: 374
+                      stock: 68
+                      enabled: 1
+                      created_by: 1
+                      updated_by: 1
+                      deleted_by: null
+                      created_at: '2026-01-06T12:37:39.000000Z'
+                      updated_at: '2026-01-06T12:37:39.000000Z'
+                      deleted_at: null
+                      category:
+                        id: 2
+                        name: Books
+                        created_by: null
+                        updated_by: null
+                        deleted_by: null
+                        created_at: '2026-01-06T12:37:37.000000Z'
+                        updated_at: '2026-01-06T12:37:37.000000Z'
+                        deleted_at: null
+                    -
+                      id: 9
+                      category_id: 2
+                      name: 'Product 9'
+                      description: 'This is the description for Product 9.'
+                      price: 141
+                      stock: 21
+                      enabled: 1
+                      created_by: 1
+                      updated_by: 1
+                      deleted_by: null
+                      created_at: '2026-01-06T12:37:39.000000Z'
+                      updated_at: '2026-01-06T12:37:39.000000Z'
+                      deleted_at: null
+                      category:
+                        id: 2
+                        name: Books
+                        created_by: null
+                        updated_by: null
+                        deleted_by: null
+                        created_at: '2026-01-06T12:37:37.000000Z'
+                        updated_at: '2026-01-06T12:37:37.000000Z'
+                        deleted_at: null
+                    -
+                      id: 10
+                      category_id: 2
+                      name: 'Product 10'
+                      description: 'This is the description for Product 10.'
+                      price: 10
+                      stock: 78
+                      enabled: 1
+                      created_by: 1
+                      updated_by: 1
+                      deleted_by: null
+                      created_at: '2026-01-06T12:37:39.000000Z'
+                      updated_at: '2026-01-06T12:37:39.000000Z'
+                      deleted_at: null
+                      category:
+                        id: 2
+                        name: Books
+                        created_by: null
+                        updated_by: null
+                        deleted_by: null
+                        created_at: '2026-01-06T12:37:37.000000Z'
+                        updated_at: '2026-01-06T12:37:37.000000Z'
+                        deleted_at: null
+                  first_page_url: 'http://localhost/api/inventory/products?page=1'
+                  from: 1
+                  last_page: 1
+                  last_page_url: 'http://localhost/api/inventory/products?page=1'
+                  links:
+                    -
+                      url: null
+                      label: '&laquo; Previous'
+                      page: null
+                      active: false
+                    -
+                      url: 'http://localhost/api/inventory/products?page=1'
+                      label: '1'
+                      page: 1
+                      active: true
+                    -
+                      url: null
+                      label: 'Next &raquo;'
+                      page: null
+                      active: false
+                  next_page_url: null
+                  path: 'http://localhost/api/inventory/products'
+                  per_page: 10
+                  prev_page_url: null
+                  to: 10
+                  total: 10
+                properties:
+                  current_page:
+                    type: integer
+                    example: 1
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        category_id: 3
+                        name: 'Product 1'
+                        description: 'This is the description for Product 1.'
+                        price: 463
+                        stock: 11
+                        enabled: 1
+                        created_by: 1
+                        updated_by: 1
+                        deleted_by: null
+                        created_at: '2026-01-06T12:37:39.000000Z'
+                        updated_at: '2026-01-06T12:37:39.000000Z'
+                        deleted_at: null
+                        category:
+                          id: 3
+                          name: Clothing
+                          created_by: null
+                          updated_by: null
+                          deleted_by: null
+                          created_at: '2026-01-06T12:37:37.000000Z'
+                          updated_at: '2026-01-06T12:37:37.000000Z'
+                          deleted_at: null
+                      -
+                        id: 2
+                        category_id: 2
+                        name: 'Product 2'
+                        description: 'This is the description for Product 2.'
+                        price: 84
+                        stock: 60
+                        enabled: 1
+                        created_by: 1
+                        updated_by: 1
+                        deleted_by: null
+                        created_at: '2026-01-06T12:37:39.000000Z'
+                        updated_at: '2026-01-06T12:37:39.000000Z'
+                        deleted_at: null
+                        category:
+                          id: 2
+                          name: Books
+                          created_by: null
+                          updated_by: null
+                          deleted_by: null
+                          created_at: '2026-01-06T12:37:37.000000Z'
+                          updated_at: '2026-01-06T12:37:37.000000Z'
+                          deleted_at: null
+                      -
+                        id: 3
+                        category_id: 2
+                        name: 'Product 3'
+                        description: 'This is the description for Product 3.'
+                        price: 270
+                        stock: 28
+                        enabled: 1
+                        created_by: 1
+                        updated_by: 1
+                        deleted_by: null
+                        created_at: '2026-01-06T12:37:39.000000Z'
+                        updated_at: '2026-01-06T12:37:39.000000Z'
+                        deleted_at: null
+                        category:
+                          id: 2
+                          name: Books
+                          created_by: null
+                          updated_by: null
+                          deleted_by: null
+                          created_at: '2026-01-06T12:37:37.000000Z'
+                          updated_at: '2026-01-06T12:37:37.000000Z'
+                          deleted_at: null
+                      -
+                        id: 4
+                        category_id: 4
+                        name: 'Product 4'
+                        description: 'This is the description for Product 4.'
+                        price: 497
+                        stock: 48
+                        enabled: 1
+                        created_by: 1
+                        updated_by: 1
+                        deleted_by: null
+                        created_at: '2026-01-06T12:37:39.000000Z'
+                        updated_at: '2026-01-06T12:37:39.000000Z'
+                        deleted_at: null
+                        category:
+                          id: 4
+                          name: Toys
+                          created_by: null
+                          updated_by: null
+                          deleted_by: null
+                          created_at: '2026-01-06T12:37:37.000000Z'
+                          updated_at: '2026-01-06T12:37:37.000000Z'
+                          deleted_at: null
+                      -
+                        id: 5
+                        category_id: 5
+                        name: 'Product 5'
+                        description: 'This is the description for Product 5.'
+                        price: 28
+                        stock: 98
+                        enabled: 1
+                        created_by: 1
+                        updated_by: 1
+                        deleted_by: null
+                        created_at: '2026-01-06T12:37:39.000000Z'
+                        updated_at: '2026-01-06T12:37:39.000000Z'
+                        deleted_at: null
+                        category:
+                          id: 5
+                          name: Furniture
+                          created_by: null
+                          updated_by: null
+                          deleted_by: null
+                          created_at: '2026-01-06T12:37:37.000000Z'
+                          updated_at: '2026-01-06T12:37:37.000000Z'
+                          deleted_at: null
+                      -
+                        id: 6
+                        category_id: 5
+                        name: 'Product 6'
+                        description: 'This is the description for Product 6.'
+                        price: 416
+                        stock: 16
+                        enabled: 1
+                        created_by: 1
+                        updated_by: 1
+                        deleted_by: null
+                        created_at: '2026-01-06T12:37:39.000000Z'
+                        updated_at: '2026-01-06T12:37:39.000000Z'
+                        deleted_at: null
+                        category:
+                          id: 5
+                          name: Furniture
+                          created_by: null
+                          updated_by: null
+                          deleted_by: null
+                          created_at: '2026-01-06T12:37:37.000000Z'
+                          updated_at: '2026-01-06T12:37:37.000000Z'
+                          deleted_at: null
+                      -
+                        id: 7
+                        category_id: 3
+                        name: 'Product 7'
+                        description: 'This is the description for Product 7.'
+                        price: 41
+                        stock: 8
+                        enabled: 1
+                        created_by: 1
+                        updated_by: 1
+                        deleted_by: null
+                        created_at: '2026-01-06T12:37:39.000000Z'
+                        updated_at: '2026-01-06T12:37:39.000000Z'
+                        deleted_at: null
+                        category:
+                          id: 3
+                          name: Clothing
+                          created_by: null
+                          updated_by: null
+                          deleted_by: null
+                          created_at: '2026-01-06T12:37:37.000000Z'
+                          updated_at: '2026-01-06T12:37:37.000000Z'
+                          deleted_at: null
+                      -
+                        id: 8
+                        category_id: 2
+                        name: 'Product 8'
+                        description: 'This is the description for Product 8.'
+                        price: 374
+                        stock: 68
+                        enabled: 1
+                        created_by: 1
+                        updated_by: 1
+                        deleted_by: null
+                        created_at: '2026-01-06T12:37:39.000000Z'
+                        updated_at: '2026-01-06T12:37:39.000000Z'
+                        deleted_at: null
+                        category:
+                          id: 2
+                          name: Books
+                          created_by: null
+                          updated_by: null
+                          deleted_by: null
+                          created_at: '2026-01-06T12:37:37.000000Z'
+                          updated_at: '2026-01-06T12:37:37.000000Z'
+                          deleted_at: null
+                      -
+                        id: 9
+                        category_id: 2
+                        name: 'Product 9'
+                        description: 'This is the description for Product 9.'
+                        price: 141
+                        stock: 21
+                        enabled: 1
+                        created_by: 1
+                        updated_by: 1
+                        deleted_by: null
+                        created_at: '2026-01-06T12:37:39.000000Z'
+                        updated_at: '2026-01-06T12:37:39.000000Z'
+                        deleted_at: null
+                        category:
+                          id: 2
+                          name: Books
+                          created_by: null
+                          updated_by: null
+                          deleted_by: null
+                          created_at: '2026-01-06T12:37:37.000000Z'
+                          updated_at: '2026-01-06T12:37:37.000000Z'
+                          deleted_at: null
+                      -
+                        id: 10
+                        category_id: 2
+                        name: 'Product 10'
+                        description: 'This is the description for Product 10.'
+                        price: 10
+                        stock: 78
+                        enabled: 1
+                        created_by: 1
+                        updated_by: 1
+                        deleted_by: null
+                        created_at: '2026-01-06T12:37:39.000000Z'
+                        updated_at: '2026-01-06T12:37:39.000000Z'
+                        deleted_at: null
+                        category:
+                          id: 2
+                          name: Books
+                          created_by: null
+                          updated_by: null
+                          deleted_by: null
+                          created_at: '2026-01-06T12:37:37.000000Z'
+                          updated_at: '2026-01-06T12:37:37.000000Z'
+                          deleted_at: null
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        category_id:
+                          type: integer
+                          example: 3
+                        name:
+                          type: string
+                          example: 'Product 1'
+                        description:
+                          type: string
+                          example: 'This is the description for Product 1.'
+                        price:
+                          type: integer
+                          example: 463
+                        stock:
+                          type: integer
+                          example: 11
+                        enabled:
+                          type: integer
+                          example: 1
+                        created_by:
+                          type: integer
+                          example: 1
+                        updated_by:
+                          type: integer
+                          example: 1
+                        deleted_by:
+                          type: string
+                          example: null
+                        created_at:
+                          type: string
+                          example: '2026-01-06T12:37:39.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2026-01-06T12:37:39.000000Z'
+                        deleted_at:
+                          type: string
+                          example: null
+                        category:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 3
+                            name:
+                              type: string
+                              example: Clothing
+                            created_by:
+                              type: string
+                              example: null
+                            updated_by:
+                              type: string
+                              example: null
+                            deleted_by:
+                              type: string
+                              example: null
+                            created_at:
+                              type: string
+                              example: '2026-01-06T12:37:37.000000Z'
+                            updated_at:
+                              type: string
+                              example: '2026-01-06T12:37:37.000000Z'
+                            deleted_at:
+                              type: string
+                              example: null
+                  first_page_url:
+                    type: string
+                    example: 'http://localhost/api/inventory/products?page=1'
+                  from:
+                    type: integer
+                    example: 1
+                  last_page:
+                    type: integer
+                    example: 1
+                  last_page_url:
+                    type: string
+                    example: 'http://localhost/api/inventory/products?page=1'
+                  links:
+                    type: array
+                    example:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        page: null
+                        active: false
+                      -
+                        url: 'http://localhost/api/inventory/products?page=1'
+                        label: '1'
+                        page: 1
+                        active: true
+                      -
+                        url: null
+                        label: 'Next &raquo;'
+                        page: null
+                        active: false
+                    items:
+                      type: object
+                      properties:
+                        url:
+                          type: string
+                          example: null
+                        label:
+                          type: string
+                          example: '&laquo; Previous'
+                        page:
+                          type: string
+                          example: null
+                        active:
+                          type: boolean
+                          example: false
+                  next_page_url:
+                    type: string
+                    example: null
+                  path:
+                    type: string
+                    example: 'http://localhost/api/inventory/products'
+                  per_page:
+                    type: integer
+                    example: 10
+                  prev_page_url:
+                    type: string
+                    example: null
+                  to:
+                    type: integer
+                    example: 10
+                  total:
+                    type: integer
+                    example: 10
+      tags:
+        - Endpoints
+    post:
+      summary: ''
+      operationId: postApiInventoryProducts
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: vmqeopfuudtdsufvyvddq
+                category_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the categories table.'
+                  example: consequatur
+                price:
+                  type: number
+                  description: 'Must be at least 0.'
+                  example: 45
+                stock:
+                  type: integer
+                  description: 'Must be at least 0.'
+                  example: 56
+                enabled:
+                  type: boolean
+                  description: ''
+                  example: false
+              required:
+                - name
+                - category_id
+                - price
+                - stock
+                - enabled
+  '/api/inventory/products/{id}':
+    get:
+      summary: ''
+      operationId: getApiInventoryProductsId
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  id: 1
+                  category_id: 3
+                  name: 'Product 1'
+                  description: 'This is the description for Product 1.'
+                  price: 463
+                  stock: 11
+                  enabled: 1
+                  created_by: 1
+                  updated_by: 1
+                  deleted_by: null
+                  created_at: '2026-01-06T12:37:39.000000Z'
+                  updated_at: '2026-01-06T12:37:39.000000Z'
+                  deleted_at: null
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  category_id:
+                    type: integer
+                    example: 3
+                  name:
+                    type: string
+                    example: 'Product 1'
+                  description:
+                    type: string
+                    example: 'This is the description for Product 1.'
+                  price:
+                    type: integer
+                    example: 463
+                  stock:
+                    type: integer
+                    example: 11
+                  enabled:
+                    type: integer
+                    example: 1
+                  created_by:
+                    type: integer
+                    example: 1
+                  updated_by:
+                    type: integer
+                    example: 1
+                  deleted_by:
+                    type: string
+                    example: null
+                  created_at:
+                    type: string
+                    example: '2026-01-06T12:37:39.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2026-01-06T12:37:39.000000Z'
+                  deleted_at:
+                    type: string
+                    example: null
+      tags:
+        - Endpoints
+    put:
+      summary: ''
+      operationId: putApiInventoryProductsId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Must not be greater than 255 characters.'
+                  example: vmqeopfuudtdsufvyvddq
+                category_id:
+                  type: string
+                  description: 'The <code>id</code> of an existing record in the categories table.'
+                  example: consequatur
+                price:
+                  type: number
+                  description: 'Must be at least 0.'
+                  example: 45
+                stock:
+                  type: integer
+                  description: 'Must be at least 0.'
+                  example: 56
+                enabled:
+                  type: boolean
+                  description: ''
+                  example: true
+              required:
+                - name
+                - category_id
+                - price
+                - stock
+                - enabled
+    delete:
+      summary: ''
+      operationId: deleteApiInventoryProductsId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the product.'
+        example: 1
+        required: true
+        schema:
+          type: integer
