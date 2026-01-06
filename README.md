@@ -54,6 +54,9 @@ php artisan db:seed ProductSeeder
 php artisan serve
 ```
 
+### Login Process
+1. After setting up the database, please register an account first then you may use that account to login.
+
 ## API Endpoint Documentations
 1. After the project was started from the step above, you may redirect to the following url to view the API Endpoint Documentations.
 ```bash
@@ -70,11 +73,13 @@ http://127.0.0.1:8000/docs
 ## Assumptions and Design Choices
 
 1. **Authentication**  
-   - Users authenticate using API tokens via `/api/login`.  
+   - Users authenticate using API tokens via `/api/login`.
+   - **Laravel Breeze** is used for simple authentication setup.  
    - Laravel Sanctum is used for token-based authentication.
 
-2. **User Roles**  
-   - Assumed a single user type (no admin vs regular distinction) since requirements didn’t specify.
+2. **Action Classes**  
+   - Core business logic is separated into **Action classes** (Action files) to keep controllers thin and maintainable.  
+   - This makes the code easier to test and reuse.
 
 3. **API Design**  
    - Followed RESTful conventions for all endpoints (`/api/products` for CRUD operations).  
@@ -86,7 +91,6 @@ http://127.0.0.1:8000/docs
 
 5. **Database**  
    - MySQL is used for local development.  
-   - Products assumed to have `name`, `description`, `price`, and `stock` fields.
 
 6. **Error Handling**  
    - API returns JSON responses with HTTP status codes.  
