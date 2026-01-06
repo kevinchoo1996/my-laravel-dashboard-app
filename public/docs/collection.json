@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel API Documentation",
-        "_postman_id": "a86ebeb8-6160-45ab-b415-85cd600a88b3",
+        "_postman_id": "1db60bbd-672e-4fd6-93bc-089bce013414",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -86,14 +86,14 @@
                                     "value": "*"
                                 }
                             ],
-                            "code": 200,
-                            "body": "{\"current_page\":1,\"data\":[{\"id\":1,\"category_id\":3,\"name\":\"Product 1\",\"description\":\"This is the description for Product 1.\",\"price\":463,\"stock\":11,\"enabled\":1,\"created_by\":1,\"updated_by\":1,\"deleted_by\":null,\"created_at\":\"2026-01-06T12:37:39.000000Z\",\"updated_at\":\"2026-01-06T12:37:39.000000Z\",\"deleted_at\":null,\"category\":{\"id\":3,\"name\":\"Clothing\",\"created_by\":null,\"updated_by\":null,\"deleted_by\":null,\"created_at\":\"2026-01-06T12:37:37.000000Z\",\"updated_at\":\"2026-01-06T12:37:37.000000Z\",\"deleted_at\":null}},{\"id\":2,\"category_id\":2,\"name\":\"Product 2\",\"description\":\"This is the description for Product 2.\",\"price\":84,\"stock\":60,\"enabled\":1,\"created_by\":1,\"updated_by\":1,\"deleted_by\":null,\"created_at\":\"2026-01-06T12:37:39.000000Z\",\"updated_at\":\"2026-01-06T12:37:39.000000Z\",\"deleted_at\":null,\"category\":{\"id\":2,\"name\":\"Books\",\"created_by\":null,\"updated_by\":null,\"deleted_by\":null,\"created_at\":\"2026-01-06T12:37:37.000000Z\",\"updated_at\":\"2026-01-06T12:37:37.000000Z\",\"deleted_at\":null}},{\"id\":3,\"category_id\":2,\"name\":\"Product 3\",\"description\":\"This is the description for Product 3.\",\"price\":270,\"stock\":28,\"enabled\":1,\"created_by\":1,\"updated_by\":1,\"deleted_by\":null,\"created_at\":\"2026-01-06T12:37:39.000000Z\",\"updated_at\":\"2026-01-06T12:37:39.000000Z\",\"deleted_at\":null,\"category\":{\"id\":2,\"name\":\"Books\",\"created_by\":null,\"updated_by\":null,\"deleted_by\":null,\"created_at\":\"2026-01-06T12:37:37.000000Z\",\"updated_at\":\"2026-01-06T12:37:37.000000Z\",\"deleted_at\":null}},{\"id\":4,\"category_id\":4,\"name\":\"Product 4\",\"description\":\"This is the description for Product 4.\",\"price\":497,\"stock\":48,\"enabled\":1,\"created_by\":1,\"updated_by\":1,\"deleted_by\":null,\"created_at\":\"2026-01-06T12:37:39.000000Z\",\"updated_at\":\"2026-01-06T12:37:39.000000Z\",\"deleted_at\":null,\"category\":{\"id\":4,\"name\":\"Toys\",\"created_by\":null,\"updated_by\":null,\"deleted_by\":null,\"created_at\":\"2026-01-06T12:37:37.000000Z\",\"updated_at\":\"2026-01-06T12:37:37.000000Z\",\"deleted_at\":null}},{\"id\":5,\"category_id\":5,\"name\":\"Product 5\",\"description\":\"This is the description for Product 5.\",\"price\":28,\"stock\":98,\"enabled\":1,\"created_by\":1,\"updated_by\":1,\"deleted_by\":null,\"created_at\":\"2026-01-06T12:37:39.000000Z\",\"updated_at\":\"2026-01-06T12:37:39.000000Z\",\"deleted_at\":null,\"category\":{\"id\":5,\"name\":\"Furniture\",\"created_by\":null,\"updated_by\":null,\"deleted_by\":null,\"created_at\":\"2026-01-06T12:37:37.000000Z\",\"updated_at\":\"2026-01-06T12:37:37.000000Z\",\"deleted_at\":null}},{\"id\":6,\"category_id\":5,\"name\":\"Product 6\",\"description\":\"This is the description for Product 6.\",\"price\":416,\"stock\":16,\"enabled\":1,\"created_by\":1,\"updated_by\":1,\"deleted_by\":null,\"created_at\":\"2026-01-06T12:37:39.000000Z\",\"updated_at\":\"2026-01-06T12:37:39.000000Z\",\"deleted_at\":null,\"category\":{\"id\":5,\"name\":\"Furniture\",\"created_by\":null,\"updated_by\":null,\"deleted_by\":null,\"created_at\":\"2026-01-06T12:37:37.000000Z\",\"updated_at\":\"2026-01-06T12:37:37.000000Z\",\"deleted_at\":null}},{\"id\":7,\"category_id\":3,\"name\":\"Product 7\",\"description\":\"This is the description for Product 7.\",\"price\":41,\"stock\":8,\"enabled\":1,\"created_by\":1,\"updated_by\":1,\"deleted_by\":null,\"created_at\":\"2026-01-06T12:37:39.000000Z\",\"updated_at\":\"2026-01-06T12:37:39.000000Z\",\"deleted_at\":null,\"category\":{\"id\":3,\"name\":\"Clothing\",\"created_by\":null,\"updated_by\":null,\"deleted_by\":null,\"created_at\":\"2026-01-06T12:37:37.000000Z\",\"updated_at\":\"2026-01-06T12:37:37.000000Z\",\"deleted_at\":null}},{\"id\":8,\"category_id\":2,\"name\":\"Product 8\",\"description\":\"This is the description for Product 8.\",\"price\":374,\"stock\":68,\"enabled\":1,\"created_by\":1,\"updated_by\":1,\"deleted_by\":null,\"created_at\":\"2026-01-06T12:37:39.000000Z\",\"updated_at\":\"2026-01-06T12:37:39.000000Z\",\"deleted_at\":null,\"category\":{\"id\":2,\"name\":\"Books\",\"created_by\":null,\"updated_by\":null,\"deleted_by\":null,\"created_at\":\"2026-01-06T12:37:37.000000Z\",\"updated_at\":\"2026-01-06T12:37:37.000000Z\",\"deleted_at\":null}},{\"id\":9,\"category_id\":2,\"name\":\"Product 9\",\"description\":\"This is the description for Product 9.\",\"price\":141,\"stock\":21,\"enabled\":1,\"created_by\":1,\"updated_by\":1,\"deleted_by\":null,\"created_at\":\"2026-01-06T12:37:39.000000Z\",\"updated_at\":\"2026-01-06T12:37:39.000000Z\",\"deleted_at\":null,\"category\":{\"id\":2,\"name\":\"Books\",\"created_by\":null,\"updated_by\":null,\"deleted_by\":null,\"created_at\":\"2026-01-06T12:37:37.000000Z\",\"updated_at\":\"2026-01-06T12:37:37.000000Z\",\"deleted_at\":null}},{\"id\":10,\"category_id\":2,\"name\":\"Product 10\",\"description\":\"This is the description for Product 10.\",\"price\":10,\"stock\":78,\"enabled\":1,\"created_by\":1,\"updated_by\":1,\"deleted_by\":null,\"created_at\":\"2026-01-06T12:37:39.000000Z\",\"updated_at\":\"2026-01-06T12:37:39.000000Z\",\"deleted_at\":null,\"category\":{\"id\":2,\"name\":\"Books\",\"created_by\":null,\"updated_by\":null,\"deleted_by\":null,\"created_at\":\"2026-01-06T12:37:37.000000Z\",\"updated_at\":\"2026-01-06T12:37:37.000000Z\",\"deleted_at\":null}}],\"first_page_url\":\"http:\\\/\\\/localhost\\\/api\\\/inventory\\\/products?page=1\",\"from\":1,\"last_page\":1,\"last_page_url\":\"http:\\\/\\\/localhost\\\/api\\\/inventory\\\/products?page=1\",\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"page\":null,\"active\":false},{\"url\":\"http:\\\/\\\/localhost\\\/api\\\/inventory\\\/products?page=1\",\"label\":\"1\",\"page\":1,\"active\":true},{\"url\":null,\"label\":\"Next &raquo;\",\"page\":null,\"active\":false}],\"next_page_url\":null,\"path\":\"http:\\\/\\\/localhost\\\/api\\\/inventory\\\/products\",\"per_page\":10,\"prev_page_url\":null,\"to\":10,\"total\":10}",
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
                             "name": ""
                         }
                     ]
                 },
                 {
-                    "name": "POST api\/inventory\/products",
+                    "name": "Create product",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -114,14 +114,14 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"vmqeopfuudtdsufvyvddq\",\"category_id\":\"consequatur\",\"price\":45,\"stock\":56,\"enabled\":false}"
+                            "raw": "{\"name\":\"vmqeopfuudtdsufvyvddq\",\"category_id\":\"consequatur\",\"price\":45,\"stock\":56,\"enabled\":true}"
                         },
                         "description": ""
                     },
                     "response": []
                 },
                 {
-                    "name": "GET api\/inventory\/products\/{id}",
+                    "name": "Get product",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -167,14 +167,14 @@
                                     "value": "*"
                                 }
                             ],
-                            "code": 200,
-                            "body": "{\"id\":1,\"category_id\":3,\"name\":\"Product 1\",\"description\":\"This is the description for Product 1.\",\"price\":463,\"stock\":11,\"enabled\":1,\"created_by\":1,\"updated_by\":1,\"deleted_by\":null,\"created_at\":\"2026-01-06T12:37:39.000000Z\",\"updated_at\":\"2026-01-06T12:37:39.000000Z\",\"deleted_at\":null}",
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated.\"}",
                             "name": ""
                         }
                     ]
                 },
                 {
-                    "name": "PUT api\/inventory\/products\/{id}",
+                    "name": "Update product",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -210,7 +210,7 @@
                     "response": []
                 },
                 {
-                    "name": "DELETE api\/inventory\/products\/{id}",
+                    "name": "Delete products",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -238,6 +238,34 @@
                             }
                         ],
                         "body": null,
+                        "description": ""
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Bulk Delete Product",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/inventory\/products\/bulk-delete",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/inventory\/products\/bulk-delete"
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"selected\":[17]}"
+                        },
                         "description": ""
                     },
                     "response": []

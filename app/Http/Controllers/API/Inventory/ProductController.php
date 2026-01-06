@@ -36,24 +36,36 @@ class ProductController extends Controller
         return $this->listPaginatedProductsAction->execute($request, 10);
     }
 
+    /**
+     * Create product
+     */
     public function store(StoreProductRequest $request)
     {
         $this->authorize('create');
         return $this->storeProductAction->execute($request->validated());
     }
 
+    /**
+     * Get product
+     */
     public function show(Product $product)
     {
         $this->authorize('view', $product);
         return $product;
     }
 
+    /**
+     * Update product
+     */
     public function update(UpdateProductRequest $request, Product $product)
     {
         $this->authorize('update', $product);
         return $this->updateProductAction->execute($product, $request->validated());
     }
 
+    /**
+     * Delete products
+     */
     public function destroy(Product $product)
     {
         $this->authorize('delete', $product);
@@ -62,6 +74,9 @@ class ProductController extends Controller
         return "Product deleted successfully.";
     }
 
+    /**
+     * Bulk Delete Product
+     */
     public function bulkDelete(BulkDeleteProductRequest $request)
     {
         $this->authorize('bulkDelete');
