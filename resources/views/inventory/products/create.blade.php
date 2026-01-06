@@ -30,7 +30,6 @@
 
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                            {{-- Product Name --}}
                             <div>
                                 <label for="name" class="block text-gray-700 font-medium mb-1">
                                     Product Name
@@ -40,7 +39,6 @@
                                     value="{{ old('name') }}" required>
                             </div>
 
-                            {{-- Category --}}
                             <div>
                                 <label for="category_id" class="block text-gray-700 font-medium mb-1">
                                     Category
@@ -56,7 +54,6 @@
                                 </select>
                             </div>
 
-                            {{-- Price --}}
                             <div>
                                 <label for="price" class="block text-gray-700 font-medium mb-1">
                                     Price
@@ -66,7 +63,6 @@
                                     value="{{ old('price') }}" required>
                             </div>
 
-                            {{-- Stock --}}
                             <div>
                                 <label for="stock" class="block text-gray-700 font-medium mb-1">
                                     Stock
@@ -75,7 +71,6 @@
                                     class="w-full border rounded px-3 py-2 focus:ring focus:ring-blue-300"
                                     value="{{ old('stock') }}" required>
                             </div>
-
                         </div>
 
 

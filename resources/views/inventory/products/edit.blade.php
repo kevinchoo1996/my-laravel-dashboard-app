@@ -26,87 +26,61 @@
                             </div>
                         @endif
 
-                        {{-- Product Name --}}
-                        <div class="mb-4">
-                            <label for="name" class="block text-gray-700 font-medium mb-1">
-                                Product Name
-                            </label>
-                            <input
-                                type="text"
-                                name="name"
-                                id="name"
-                                class="w-full border rounded px-3 py-2 focus:ring focus:ring-blue-300"
-                                value="{{ old('name', $product->name) }}"
-                                required
-                            >
-                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                        {{-- Category --}}
-                        <div class="mb-4">
-                            <label for="category_id" class="block text-gray-700 font-medium mb-1">
-                                Category
-                            </label>
-                            <select
-                                name="category_id"
-                                id="category_id"
-                                class="w-full border rounded px-3 py-2 focus:ring focus:ring-blue-300"
-                            >
-                                <option value="">-- Select Category --</option>
-                                @foreach ($categories as $category)
-                                    <option
-                                        value="{{ $category->id }}"
-                                        @selected(old('category_id', $product->category_id) == $category->id)
-                                    >
-                                        {{ $category->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
+                            {{-- Product Name --}}
+                            <div>
+                                <label for="name" class="block text-gray-700 font-medium mb-1">
+                                    Product Name
+                                </label>
+                                <input type="text" name="name" id="name"
+                                    class="w-full border rounded px-3 py-2 focus:ring focus:ring-blue-300"
+                                    value="{{ old('name', $product->name ?? '') }}" required>
+                            </div>
 
-                        {{-- Price --}}
-                        <div class="mb-4">
-                            <label for="price" class="block text-gray-700 font-medium mb-1">
-                                Price
-                            </label>
-                            <input
-                                type="number"
-                                name="price"
-                                id="price"
-                                step="0.01"
-                                min="0"
-                                class="w-full border rounded px-3 py-2 focus:ring focus:ring-blue-300"
-                                value="{{ old('price', $product->price) }}"
-                                required
-                            >
-                        </div>
+                            {{-- Category --}}
+                            <div>
+                                <label for="category_id" class="block text-gray-700 font-medium mb-1">
+                                    Category
+                                </label>
+                                <select name="category_id" id="category_id"
+                                    class="w-full border rounded px-3 py-2 focus:ring focus:ring-blue-300">
+                                    <option value="">-- Select Category --</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}" @selected(old('category_id', $product->category_id ?? '') == $category->id)>
+                                            {{ $category->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                        {{-- Stock --}}
-                        <div class="mb-4">
-                            <label for="stock" class="block text-gray-700 font-medium mb-1">
-                                Stock
-                            </label>
-                            <input
-                                type="number"
-                                name="stock"
-                                id="stock"
-                                min="0"
-                                class="w-full border rounded px-3 py-2 focus:ring focus:ring-blue-300"
-                                value="{{ old('stock', $product->stock) }}"
-                                required
-                            >
+                            {{-- Price --}}
+                            <div>
+                                <label for="price" class="block text-gray-700 font-medium mb-1">
+                                    Price
+                                </label>
+                                <input type="number" name="price" id="price" step="0.01" min="0"
+                                    class="w-full border rounded px-3 py-2 focus:ring focus:ring-blue-300"
+                                    value="{{ old('price', $product->price ?? '') }}" required>
+                            </div>
+
+                            {{-- Stock --}}
+                            <div>
+                                <label for="stock" class="block text-gray-700 font-medium mb-1">
+                                    Stock
+                                </label>
+                                <input type="number" name="stock" id="stock" min="0"
+                                    class="w-full border rounded px-3 py-2 focus:ring focus:ring-blue-300"
+                                    value="{{ old('stock', $product->stock ?? '') }}" required>
+                            </div>
+
                         </div>
 
                         {{-- Enabled --}}
-                        <div class="mb-4 flex items-center">
+                        <div class="mt-4 flex items-center">
                             <input type="hidden" name="enabled" value="0">
-                            <input
-                                type="checkbox"
-                                name="enabled"
-                                id="enabled"
-                                value="1"
-                                class="h-4 w-4 text-blue-600 border-gray-300 rounded"
-                                @checked(old('enabled', $product->enabled))
-                            >
+                            <input type="checkbox" name="enabled" id="enabled" value="1"
+                                class="h-4 w-4 text-blue-600 border-gray-300 rounded" @checked(old('enabled', $product->enabled))>
                             <label for="enabled" class="ml-2 text-gray-700 font-medium">
                                 Enabled
                             </label>
@@ -116,17 +90,12 @@
 
                     {{-- Actions --}}
                     <div class="flex justify-end space-x-2 mt-4">
-                        <button
-                            type="submit"
-                            class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                        >
+                        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
                             Update
                         </button>
 
-                        <a
-                            href="{{ route('inventory.products.index') }}"
-                            class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400"
-                        >
+                        <a href="{{ route('inventory.products.index') }}"
+                            class="bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400">
                             Cancel
                         </a>
                     </div>

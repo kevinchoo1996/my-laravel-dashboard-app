@@ -28,7 +28,6 @@ class ProductController extends Controller
         }
 
         $products = $query->paginate(10);
-
         $categories = Category::all();
 
         return view('inventory.products.index', compact('products', 'categories'));
