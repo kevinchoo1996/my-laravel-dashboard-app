@@ -18,8 +18,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::prefix('inventory')->name('inventory.')->group(function () {
-        Route::resource('products', ProductController::class);
+        Route::post('products/export', [ProductController::class, 'export'])->name('products.export');
         Route::delete('products/bulk-delete', [ProductController::class, 'bulkDelete'])->name('products.bulk-delete');
+        Route::resource('products', ProductController::class);
     });
 });
 

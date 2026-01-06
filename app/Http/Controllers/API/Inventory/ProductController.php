@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Inventory;
+namespace App\Http\Controllers\API\Inventory;
 
 use App\Actions\Inventory\Product\DestroyProductsAction;
 use App\Actions\Inventory\Product\ExportProductsAction;
@@ -33,21 +33,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $this->authorize('viewAny', Product::class);
-        $products = $this->listPaginatedProductsAction->execute($request, 10);
-        $categories = $this->listCategoriesAction->execute();
-
-        return view('inventory.products.index', compact('products', 'categories'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        $this->authorize('create', Product::class);
-
-        $categories = $this->listCategoriesAction->execute();
-        return view('inventory.products.create', compact('categories'));
+        return $this->listPaginatedProductsAction->execute($request, 10);
     }
 
     /**
@@ -55,12 +41,8 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        $this->authorize('create', Product::class);
-
-        $this->storeProductAction->execute($request->validated());
-
-        return redirect()->route('inventory.products.index')
-            ->with('success', 'Product created successfully.');
+        $this->authorize('create');
+        return $this->storeProductAction->execute($request->validated());
     }
 
     /**
@@ -68,34 +50,14 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $this->authorize('view', $product);
+        return $product;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Product $product)
-    {
-        $this->authorize('update', $product);
-
-        return view('inventory.products.edit', [
-            'product'    => $product,
-            'categories' => $this->listCategoriesAction->execute(),
-        ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(UpdateProductRequest $request, Product $product)
     {
         $this->authorize('update', $product);
-
-        $this->updateProductAction->execute($product, $request->validated());
-
-        return redirect()
-            ->route('inventory.products.index')
-            ->with('success', 'Product updated successfully.');
+        return $this->updateProductAction->execute($product, $request->validated());
     }
 
     /**
@@ -104,22 +66,15 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $this->authorize('delete', $product);
-
         $this->destroyProductsAction->execute([$product->id]);
-        return redirect()->back()->with('success', 'Product deleted successfully.');
+
+        return "Product deleted successfully.";
     }
 
     public function bulkDelete(BulkDeleteProductRequest $request)
     {
-        $this->authorize('bulkDelete', Product::class);
-
+        $this->authorize('bulkDelete');
         $this->destroyProductsAction->execute($request->input('selected'));
         return redirect()->back()->with('success', 'Selected products deleted successfully.');
-    }
-
-    public function export(ExportProductRequest $request)
-    {
-        $this->authorize('export', Product::class);
-        return $this->exportProductsAction->execute($request->input('selected'));
     }
 }

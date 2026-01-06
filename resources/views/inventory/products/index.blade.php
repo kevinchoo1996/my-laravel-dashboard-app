@@ -56,10 +56,14 @@
                         class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
                         <div class="py-1">
                             <a href="{{ route('inventory.products.create') }}"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Create Product</a>
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Create</a>
                             <button id="bulk-delete-top" type="button"
                                 class="w-full text-left block px-4 py-2 text-sm text-red-600 hover:bg-gray-100">
                                 Bulk Delete
+                            </button>
+                            <button id="bulk-export-top" type="button"
+                                class="w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                Export
                             </button>
                         </div>
                     </div>
@@ -67,65 +71,93 @@
 
             </div>
 
+
+            <div class="bg-white shadow-sm rounded-lg overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <input type="checkbox" id="select-all"
+                                        class="h-4 w-4 text-blue-600 border-gray-300 rounded">
+                                </th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    ID</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Name</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Category</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Price</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Stock</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Enabled</th>
+                                <th
+                                    class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            @forelse ($products as $product)
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <input type="checkbox" name="selected[]" value="{{ $product->id }}"
+                                            class="select-item h-4 w-4 text-blue-600 border-gray-300 rounded">
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $product->id }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $product->name }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $product->category->name ?? '-' }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ number_format($product->price, 2) }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $product->stock }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        @if ($product->enabled)
+                                            <span class="text-green-600 font-semibold">Yes</span>
+                                        @else
+                                            <span class="text-red-600 font-semibold">No</span>
+                                        @endif
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right flex justify-end gap-2">
+                                        {{-- Edit --}}
+                                        <a href="{{ route('inventory.products.edit', $product->id) }}"
+                                            class="text-blue-600 hover:text-blue-800 font-medium">Edit</a>
+
+                                        {{-- Delete redirect --}}
+                                        <form action="{{ route('inventory.products.destroy', $product->id) }}" method="POST" class="inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" onclick="return confirm('Are you sure you want to delete this product?');"
+                                                class="text-red-600 hover:text-red-800 font-medium">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="8" class="px-6 py-4 text-center">No products found.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
             {{-- Products Table (Bulk Delete Form) --}}
             <form id="bulk-delete-form" method="POST" action="{{ route('inventory.products.bulk-delete') }}">
                 @csrf
                 @method('DELETE')
-
-                <div class="bg-white shadow-sm rounded-lg overflow-hidden">
-                    <div class="overflow-x-auto">
-                        <table class="min-w-full divide-y divide-gray-200">
-                            <thead class="bg-gray-50">
-                                <tr>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        <input type="checkbox" id="select-all" class="h-4 w-4 text-blue-600 border-gray-300 rounded">
-                                    </th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Stock</th>
-                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Enabled</th>
-                                    <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                @forelse ($products as $product)
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            <input type="checkbox" name="selected[]" value="{{ $product->id }}" class="select-item h-4 w-4 text-blue-600 border-gray-300 rounded">
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $product->id }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $product->name }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $product->category->name ?? '-' }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ number_format($product->price, 2) }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">{{ $product->stock }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap">
-                                            @if ($product->enabled)
-                                                <span class="text-green-600 font-semibold">Yes</span>
-                                            @else
-                                                <span class="text-red-600 font-semibold">No</span>
-                                            @endif
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-right flex justify-end gap-2">
-                                            {{-- Edit --}}
-                                            <a href="{{ route('inventory.products.edit', $product->id) }}" class="text-blue-600 hover:text-blue-800 font-medium">Edit</a>
-
-                                            {{-- Delete redirect --}}
-                                            <a href="{{ url("inventory/products/{$product->id}/delete") }}"
-                                                onclick="return confirm('Are you sure you want to delete this product?');"
-                                                class="text-red-600 hover:text-red-800 font-medium">Delete</a>
-                                        </td>
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="8" class="px-6 py-4 text-center">No products found.</td>
-                                    </tr>
-                                @endforelse
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+            </form>
+            <form id="bulk-export-form" method="POST" action="{{ route('inventory.products.export') }}">
+                @csrf
+                <input type="hidden" name="selected[]" id="export-selected-ids">
             </form>
 
             {{-- Pagination --}}
@@ -146,13 +178,28 @@
 
         // Bulk delete function
         function bulkDelete() {
-            const checked = document.querySelectorAll('.select-item:checked');
+            const checked = Array.from(document.querySelectorAll('.select-item:checked'));
             if (checked.length === 0) {
                 alert('Please select at least one product.');
                 return;
             }
+
             if (confirm('Are you sure you want to delete the selected products?')) {
-                document.getElementById('bulk-delete-form').submit();
+                const form = document.getElementById('bulk-delete-form');
+
+                // Remove any previous hidden inputs
+                form.querySelectorAll('input[name="selected[]"]').forEach(i => i.remove());
+
+                // Add hidden inputs for each selected product
+                checked.forEach(item => {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'selected[]';
+                    input.value = item.value;
+                    form.appendChild(input);
+                });
+
+                form.submit();
             }
         }
 
@@ -171,16 +218,41 @@
         // Top bulk delete dropdown button triggers same bulk delete
         const bulkDeleteTop = document.getElementById('bulk-delete-top');
         bulkDeleteTop.addEventListener('click', bulkDelete);
+
+        const bulkExportTop = document.getElementById('bulk-export-top');
+        const exportForm = document.getElementById('bulk-export-form');
+        const exportInput = document.getElementById('export-selected-ids');
+
+        bulkExportTop.addEventListener('click', () => {
+            const checked = Array.from(document.querySelectorAll('.select-item:checked'));
+            if (checked.length === 0) {
+                alert('Please select at least one product to export.');
+                return;
+            }
+
+            if (!confirm('Export selected products to Excel?')) return;
+
+            const form = document.getElementById('bulk-export-form');
+
+            // Remove previous hidden inputs
+            form.querySelectorAll('input[name="selected[]"]').forEach(i => i.remove());
+
+            // Add a hidden input for each selected item
+            checked.forEach(item => {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'selected[]';
+                input.value = item.value;
+                form.appendChild(input);
+            });
+
+            form.submit();
+        });
     </script>
 
     @if (session('success'))
-        <div 
-            x-data="{ show: true }"
-            x-init="setTimeout(() => show = false, 3000)"
-            x-show="show"
-            x-transition
-            class="fixed top-6 right-6 z-50 max-w-sm w-full bg-green-500 text-white px-4 py-3 rounded-lg shadow-lg flex items-center justify-between"
-        >
+        <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 3000)" x-show="show" x-transition
+            class="fixed top-6 right-6 z-50 max-w-sm w-full bg-green-500 text-white px-4 py-3 rounded-lg shadow-lg flex items-center justify-between">
             <span class="text-sm font-medium">
                 {{ session('success') }}
             </span>
