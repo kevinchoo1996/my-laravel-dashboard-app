@@ -53,3 +53,49 @@ php artisan db:seed ProductSeeder
 ```bash
 php artisan serve
 ```
+
+## API Endpoint Documentations
+1. After the project was started from the step above, you may redirect to the following url to view the API Endpoint Documentations.
+```bash
+http://127.0.0.1:8000/docs
+```
+
+2. The documentation was build using *knuckleswtf/scribe* Package
+3. To rebuild the API documentation after changes, please do the following:
+    ```bash
+   -> Update SCRIBE_AUTH_KEY to the correct API Bearer Token from calling /api/login
+   -> Run php artisan scribe:generate
+    ```
+
+## Assumptions and Design Choices
+
+1. **Authentication**  
+   - Users authenticate using API tokens via `/api/login`.  
+   - Laravel Sanctum is used for token-based authentication.
+
+2. **User Roles**  
+   - Assumed a single user type (no admin vs regular distinction) since requirements didn’t specify.
+
+3. **API Design**  
+   - Followed RESTful conventions for all endpoints (`/api/products` for CRUD operations).  
+   - Responses are standardized with `message` and `data` fields.
+
+4. **Validation**  
+   - Basic request validation implemented via Laravel Form Requests.  
+   - Assumed simple rules, e.g., `name` required, `price` numeric.
+
+5. **Database**  
+   - MySQL is used for local development.  
+   - Products assumed to have `name`, `description`, `price`, and `stock` fields.
+
+6. **Error Handling**  
+   - API returns JSON responses with HTTP status codes.  
+   - Default Laravel error messages are used where applicable.
+
+7. **API Documentation**  
+   - Generated using Scribe.  
+   - Local `/docs` URL assumed for development access.
+
+8. **Frontend**  
+   - Minimal Blade views are implemented for testing CRUD operations.  
+   - Project is API-first; frontend is secondary.
