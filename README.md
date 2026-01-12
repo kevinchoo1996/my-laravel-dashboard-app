@@ -1,59 +1,105 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Project Setup Instructions
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Follow these steps to get the project running locally.
 
-## About Laravel
+### Prerequisites
+Make sure you have the following installed:
+- PHP >= 8.1
+- Composer
+- Laravel >= 12
+- MySQL or PostgreSQL
+- Node.js & npm (only if using frontend assets)
+- Git
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Installation Steps
+1. **Clone the repository**
+```bash
+git clone https://github.com/your-username/project-name.git
+cd project-name
+```
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+2. **Install PHP dependencies using Composer**
+```bash
+composer install
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+3. Install frontend dependencies
+```bash
+npm install
+npm run dev
+```
 
-## Learning Laravel
+4. Copy the environment file
+```bash
+cp .env.example .env
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+5. Generate application key
+```bash
+php artisan key:generate
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Database Setup
+1. Create schema "my_product_dashboard" or any schema of your liking.
+2. Run the following script to migrate and see the product and categories.
+```bash
+php artisan migrate
+php artisan db:seed CategorySeeder
+php artisan db:seed ProductSeeder
+```
 
-## Laravel Sponsors
+### Start The Project
+1. Start the local development server by running this command:
+```bash
+php artisan serve
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Login Process
+1. After setting up the database, please register an account first then you may use that account to login.
 
-### Premium Partners
+## API Endpoint Documentations
+1. After the project was started from the step above, you may redirect to the following url to view the API Endpoint Documentations.
+```bash
+http://127.0.0.1:8000/docs
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+2. The documentation was build using *knuckleswtf/scribe* Package
+3. To rebuild the API documentation after changes, please do the following:
+    ```bash
+   -> Update SCRIBE_AUTH_KEY to the correct API Bearer Token from calling /api/login
+   -> Run php artisan scribe:generate
+    ```
 
-## Contributing
+## Assumptions and Design Choices
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. **Authentication**  
+   - Users authenticate using API tokens via `/api/login`.
+   - **Laravel Breeze** is used for simple authentication setup.  
+   - Laravel Sanctum is used for token-based authentication.
 
-## Code of Conduct
+2. **Action Classes**  
+   - Core business logic is separated into **Action classes** (Action files) to keep controllers thin and maintainable.  
+   - This makes the code easier to test and reuse.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+3. **API Design**  
+   - Followed RESTful conventions for all endpoints (`/api/products` for CRUD operations).  
+   - Responses are standardized with `message` and `data` fields.
 
-## Security Vulnerabilities
+4. **Validation**  
+   - Basic request validation implemented via Laravel Form Requests.  
+   - Assumed simple rules, e.g., `name` required, `price` numeric.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+5. **Database**  
+   - MySQL is used for local development.  
 
-## License
+6. **Error Handling**  
+   - API returns JSON responses with HTTP status codes.  
+   - Default Laravel error messages are used where applicable.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+7. **API Documentation**  
+   - Generated using Scribe.  
+   - Local `/docs` URL assumed for development access.
+
+8. **Frontend**  
+   - Minimal Blade views are implemented for testing CRUD operations.  
+   - Project is API-first; frontend is secondary.
